@@ -62,7 +62,7 @@ const FlowBuilder = () => {
 
             {savedFlowId && (
               <div className="flow-link">
-                <a href={`http://localhost:5000/flow/${savedFlowId}`} target="_blank" rel="noopener noreferrer">
+                <a href={`http://localhost:5001/flow/${savedFlowId}`} target="_blank" rel="noopener noreferrer">
                   View Flow
                 </a>
               </div>

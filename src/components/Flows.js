@@ -86,7 +86,7 @@ const Flows = () => {
               <div className="flow-actions">
                 <div className="action-buttons">
                   <Button
-                    onClick={() => window.open(`http://localhost:5000/flow/${flow.consultationId}`, '_blank')}
+                    onClick={() => window.open(`http://localhost:5001/flow/${flow.consultationId}`, '_blank')}
                     variant="primary"
                   >
                     View
