@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getUserSurveys, deleteSurvey } from '../services/api';
+import { getUserConsultations, deleteConsultation } from '../services/api';
 import { auth } from '../firebase';
 import Button from './Button';
-import './SavedSurveys.css';
+import './Flows.css';
 
-const SavedSurveys = () => {
-  const [surveys, setSurveys] = useState([]);
+const Flows = () => {
+  const [flows, setFlows] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [deleteConfirmId, setDeleteConfirmId] = useState(null);
   const navigate = useNavigate();
 
-  const fetchSurveys = async () => {
+  const fetchFlows = async () => {
     try {
-      const data = await getUserSurveys();
-      setSurveys(data);
+      const data = await getUserConsultations();
+      setFlows(data);
     } catch (err) {
       setError(err.message);
     } finally {
@@ -25,82 +25,82 @@ const SavedSurveys = () => {
 
   useEffect(() => {
     if (auth.currentUser) {
-      fetchSurveys();
+      fetchFlows();
     } else {
       setLoading(false);
     }
   }, []);
 
-  const handleDelete = async (surveyId) => {
+  const handleDelete = async (flowId) => {
     try {
-      await deleteSurvey(surveyId);
-      setSurveys(surveys.filter(survey => survey.surveyId !== surveyId));
+      await deleteConsultation(flowId);
+      setFlows(flows.filter(flow => flow.consultationId !== flowId));
       setDeleteConfirmId(null);
     } catch (err) {
       setError(err.message);
     }
   };
 
-  const handleEdit = (survey) => {
-    navigate(`/edit-survey/${survey.surveyId}`, { state: { survey } });
+  const handleEdit = (flow) => {
+    navigate(`/edit-flow/${flow.consultationId}`, { state: { flow } });
   };
 
   if (loading) {
-    return <div className="saved-surveys-loading">Loading your surveys...</div>;
+    return <div className="flows-loading">Loading your flows...</div>;
   }
 
   if (error) {
-    return <div className="saved-surveys-error">Error: {error}</div>;
+    return <div className="flows-error">Error: {error}</div>;
   }
 
   return (
-    <div className="saved-surveys">
-      <h1>Your Surveys</h1>
-      {surveys.length === 0 ? (
-        <div className="no-surveys">
-          <p>You haven't created any surveys yet.</p>
+    <div className="flows">
+      <h1>Your Flows</h1>
+      {flows.length === 0 ? (
+        <div className="no-flows">
+          <p>You haven't created any flows yet.</p>
           <Button
-            onClick={() => navigate('/')}
+            onClick={() => navigate('/flow-builder')}
             variant="primary"
-            className="create-survey-link"
+            className="create-flow-link"
           >
-            Create Your First Survey
+            Create Your First Flow
           </Button>
         </div>
       ) : (
-        <div className="surveys-grid">
-          {surveys.map((survey) => (
-            <div key={survey.surveyId} className="survey-card">
-              <h2>{survey.title}</h2>
-              {survey.description && (
-                <p className="survey-description">{survey.description}</p>
+        <div className="flows-grid">
+          {flows.map((flow) => (
+            <div key={flow.consultationId} className="flow-card">
+              <h2>{flow.title}</h2>
+              {flow.description && (
+                <p className="flow-description">{flow.description}</p>
               )}
-              <div className="survey-meta">
-                <span className="survey-date">
-                  Created: {new Date(survey.createdAt).toLocaleDateString()}
+              <div className="flow-meta">
+                <span className="flow-date">
+                  Created: {new Date(flow.createdAt).toLocaleDateString()}
                 </span>
-                <span className="survey-questions">
-                  {survey.questions?.length || 0} questions
+                <span className="flow-questions">
+                  {flow.questions?.length || 0} questions
                 </span>
               </div>
-              <div className="survey-actions">
+              <div className="flow-actions">
                 <div className="action-buttons">
                   <Button
-                    onClick={() => navigate(`/surveys/${survey.surveyId}`)}
+                    onClick={() => window.open(`http://localhost:5000/flow/${flow.consultationId}`, '_blank')}
                     variant="primary"
                   >
                     View
                   </Button>
                   <Button
-                    onClick={() => handleEdit(survey)}
+                    onClick={() => handleEdit(flow)}
                     variant="secondary"
                   >
                     Edit
                   </Button>
-                  {deleteConfirmId === survey.surveyId ? (
+                  {deleteConfirmId === flow.consultationId ? (
                     <div className="delete-confirmation">
                       <Button
-                        onClick={() => handleDelete(survey.surveyId)}
+                        onClick={() => handleDelete(flow.consultationId)}
                         variant="primary"
                         className="confirm-delete-button"
                       >
@@ -116,9 +116,9 @@ const SavedSurveys = () => {
                     </div>
                   ) : (
                     <Button
-                      onClick={() => setDeleteConfirmId(survey.surveyId)}
+                      onClick={() => setDeleteConfirmId(flow.consultationId)}
                       variant="secondary"
-                      className="delete-survey-button"
+                      className="delete-flow-button"
                     >
                       Delete
                     </Button>
@@ -133,4 +133,4 @@ const SavedSurveys = () => {
   );
 };
 
-export default SavedSurveys; 
+export default Flows;

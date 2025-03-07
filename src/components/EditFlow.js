@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import QuestionDesigner from './QuestionDesigner';
 import QuestionPreview from './QuestionPreview';
-import { updateSurvey } from '../services/api';
-import './SurveyDesigner.css';
+import { updateConsultation } from '../services/api';
+import './FlowBuilder.css';
 
-const EditSurvey = () => {
-  const { surveyId } = useParams();
+const EditFlow = () => {
+  const { consultationId } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
   const [questions, setQuestions] = useState([]);
@@ -16,11 +16,11 @@ const EditSurvey = () => {
   const [saveStatus, setSaveStatus] = useState(null);
 
   useEffect(() => {
-    if (location.state?.survey) {
-      const { survey } = location.state;
-      setTitle(survey.title);
-      setDescription(survey.description || '');
-      setQuestions(survey.questions || []);
+    if (location.state?.flow) {
+      const { flow } = location.state;
+      setTitle(flow.title);
+      setDescription(flow.description || '');
+      setQuestions(flow.questions || []);
     }
   }, [location.state]);
 
@@ -37,17 +37,17 @@ const EditSurvey = () => {
     setQuestions(newQuestions);
   };
 
-  const validateSurvey = () => {
+  const validateFlow = () => {
     const errors = [];
 
     // Validate title
     if (!title.trim()) {
-      errors.push('Please enter a survey title');
+      errors.push('Please enter a flow title');
     }
 
     // Validate questions array
     if (questions.length === 0) {
-      errors.push('Please add at least one question to your survey');
+      errors.push('Please add at least one question to your flow');
     } else {
       // Validate each question
       questions.forEach((question, index) => {
@@ -68,7 +68,7 @@ const EditSurvey = () => {
   };
 
   const handleSave = async () => {
-    const validationErrors = validateSurvey();
+    const validationErrors = validateFlow();
     
     if (validationErrors.length > 0) {
       setSaveStatus({ 
@@ -82,7 +82,7 @@ const EditSurvey = () => {
     setSaveStatus(null);
 
     try {
-      const surveyData = {
+      const flowData = {
         title: title.trim(),
         description: description.trim(),
         questions: questions.map((q, index) => ({
@@ -93,13 +93,13 @@ const EditSurvey = () => {
         }))
       };
 
-      await updateSurvey(surveyId, surveyData);
+      await updateConsultation(consultationId, flowData);
       setSaveStatus({ 
         type: 'success', 
-        message: 'Survey updated successfully!' 
+        message: 'Flow updated successfully!' 
       });
       setTimeout(() => {
-        navigate('/my-surveys');
+        navigate('/my-flows');
       }, 1500);
     } catch (error) {
       setSaveStatus({ type: 'error', message: error.message });
@@ -109,23 +109,23 @@ const EditSurvey = () => {
   };
 
   return (
-    <div className="survey-designer">
-      <h1>Edit Survey</h1>
-      <div className="survey-designer-container">
+    <div className="flow-builder">
+      <h1>Edit Flow</h1>
+      <div className="flow-builder-container">
         <div className="designer-section">
-          <div className="survey-info">
+          <div className="flow-info">
             <input
               type="text"
-              placeholder="Survey Title"
+              placeholder="Flow Title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="survey-title-input"
+              className="flow-title-input"
             />
             <textarea
-              placeholder="Survey Description (optional)"
+              placeholder="Flow Description (optional)"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              className="survey-description-input"
+              className="flow-description-input"
             />
           </div>
           <QuestionDesigner onAddQuestion={handleAddQuestion} />
@@ -140,7 +140,7 @@ const EditSurvey = () => {
             <button 
               onClick={handleSave}
               disabled={isSaving || questions.length === 0}
-              className="save-survey-button"
+              className="save-flow-button"
             >
               {isSaving ? 'Saving...' : 'Save Changes'}
             </button>
@@ -156,4 +156,4 @@ const EditSurvey = () => {
   );
 };
 
-export default EditSurvey; 
+export default EditFlow; 

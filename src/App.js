@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { auth } from './firebase';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
-import SurveyDesigner from './components/SurveyDesigner';
-import SurveyView from './components/SurveyView';
-import SavedSurveys from './components/SavedSurveys';
-import EditSurvey from './components/EditSurvey';
+import FlowBuilder from './components/FlowBuilder';
+import FlowView from './components/FlowView';
+import Flows from './components/Flows';
+import EditFlow from './components/EditFlow';
 import NavBar from './components/NavBar';
 import Welcome from './components/Welcome';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -48,11 +48,11 @@ function AppContent() {
       <NavBar user={user} onSignOut={handleSignOut} />
       <Routes>
         <Route path="/welcome" element={<Welcome />} />
-        <Route path="/" element={<Navigate to="/my-surveys" replace />} />
-        <Route path="/survey-builder" element={<ProtectedRoute><SurveyDesigner /></ProtectedRoute>} />
-        <Route path="/my-surveys" element={<ProtectedRoute><SavedSurveys /></ProtectedRoute>} />
-        <Route path="/surveys/:surveyId" element={<SurveyView />} />
-        <Route path="/edit-survey/:surveyId" element={<ProtectedRoute><EditSurvey /></ProtectedRoute>} />
+        <Route path="/" element={<Navigate to="/my-flows" replace />} />
+        <Route path="/flow-builder" element={<ProtectedRoute><FlowBuilder /></ProtectedRoute>} />
+        <Route path="/my-flows" element={<ProtectedRoute><Flows /></ProtectedRoute>} />
+        <Route path="/consultations/:consultationId" element={<FlowView />} />
+        <Route path="/edit-flow/:consultationId" element={<ProtectedRoute><EditFlow /></ProtectedRoute>} />
         <Route path="*" element={<Navigate to="/welcome" replace />} />
       </Routes>
     </div>

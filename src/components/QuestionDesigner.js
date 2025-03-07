@@ -39,7 +39,7 @@ const QuestionDesigner = ({ onSubmit }) => {
 
   return (
     <div className="question-designer">
-      <h2>Design Your Question</h2>
+      <h2>New Question</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="question-type">Question Type</label>

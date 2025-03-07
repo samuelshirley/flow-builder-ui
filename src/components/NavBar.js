@@ -17,11 +17,11 @@ const NavBar = () => {
       <div className="navbar-left">
         {isAuthenticated ? (
           <>
-            <Link to="/survey-builder" className={`nav-link ${isActive('/survey-builder') ? 'active' : ''}`}>
-              Survey Builder
+            <Link to="/flow-builder" className={`nav-link ${isActive('/flow-builder') ? 'active' : ''}`}>
+              Flow Builder
             </Link>
-            <Link to="/my-surveys" className={`nav-link ${isActive('/my-surveys') ? 'active' : ''}`}>
-              My Surveys
+            <Link to="/my-flows" className={`nav-link ${isActive('/my-flows') ? 'active' : ''}`}>
+              Flows
             </Link>
           </>
         ) : !isWelcomePage && (

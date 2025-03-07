@@ -1,4 +1,4 @@
-.survey-view {
+.flow-view {
   max-width: 800px;
   margin: 40px auto;
   padding: 40px;
@@ -6,12 +6,12 @@
   border: 1px solid var(--border-color);
 }
 
-.survey-header {
+.flow-header {
   margin-bottom: 40px;
   text-align: center;
 }
 
-.survey-header h1 {
+.flow-header h1 {
   font-size: 24px;
   font-weight: 400;
   color: var(--text-color);
@@ -20,14 +20,14 @@
   text-transform: uppercase;
 }
 
-.survey-description {
+.flow-description {
   font-size: 14px;
   line-height: 1.6;
   color: var(--text-color);
   opacity: 0.8;
 }
 
-.survey-questions {
+.flow-questions {
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -111,7 +111,7 @@
   border-color: var(--text-color);
 }
 
-.submit-survey-button {
+.submit-flow-button {
   width: 100%;
   padding: 12px 24px;
   background: var(--text-color);
@@ -126,18 +126,18 @@
   height: 48px;
 }
 
-.submit-survey-button:hover {
+.submit-flow-button:hover {
   background: var(--background-color);
   color: var(--text-color);
 }
 
-.submit-survey-button:disabled {
+.submit-flow-button:disabled {
   opacity: 0.7;
   cursor: not-allowed;
 }
 
-.survey-view-loading,
-.survey-view-error {
+.flow-view-loading,
+.flow-view-error {
   text-align: center;
   padding: 60px;
   font-size: 14px;
@@ -145,6 +145,6 @@
   opacity: 0.8;
 }
 
-.survey-view-error {
+.flow-view-error {
   color: var(--error-color);
 } 

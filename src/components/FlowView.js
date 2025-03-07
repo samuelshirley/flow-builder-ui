@@ -1,63 +1,63 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import './SurveyView.css';
+import './FlowView.css';
 
-const SurveyView = () => {
-  const { surveyId } = useParams();
-  const [survey, setSurvey] = useState(null);
+const FlowView = () => {
+  const { consultationId } = useParams();
+  const [flow, setFlow] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchSurvey = async () => {
+    const fetchFlow = async () => {
       try {
-        console.log('Fetching survey with ID:', surveyId);
-        const response = await fetch(`http://localhost:3001/surveys/${surveyId}`);
+        console.log('Fetching flow with ID:', consultationId);
+        const response = await fetch(`http://localhost:3001/consultations/${consultationId}`);
         console.log('Response status:', response.status);
         
         if (!response.ok) {
           const errorData = await response.json();
-          throw new Error(errorData.error || 'Failed to fetch survey');
+          throw new Error(errorData.error || 'Failed to fetch flow');
         }
         
         const data = await response.json();
-        console.log('Received survey data:', data);
-        setSurvey(data);
+        console.log('Received flow data:', data);
+        setFlow(data);
       } catch (err) {
-        console.error('Error fetching survey:', err);
+        console.error('Error fetching flow:', err);
         setError(err.message);
       } finally {
         setLoading(false);
       }
     };
 
-    if (surveyId) {
-      fetchSurvey();
+    if (consultationId) {
+      fetchFlow();
     }
-  }, [surveyId]);
+  }, [consultationId]);
 
   if (loading) {
-    return <div className="survey-view-loading">Loading survey...</div>;
+    return <div className="flow-view-loading">Loading flow...</div>;
   }
 
   if (error) {
-    return <div className="survey-view-error">Error: {error}</div>;
+    return <div className="flow-view-error">Error: {error}</div>;
   }
 
-  if (!survey) {
-    return <div className="survey-view-error">Survey not found</div>;
+  if (!flow) {
+    return <div className="flow-view-error">Flow not found</div>;
   }
 
   return (
-    <div className="survey-view">
-      <div className="survey-header">
-        <h1>{survey.title}</h1>
-        {survey.description && (
-          <p className="survey-description">{survey.description}</p>
+    <div className="flow-view">
+      <div className="flow-header">
+        <h1>{flow.title}</h1>
+        {flow.description && (
+          <p className="flow-description">{flow.description}</p>
         )}
       </div>
-      <div className="survey-questions">
-        {survey.questions.map((question, index) => (
+      <div className="flow-questions">
+        {flow.questions.map((question, index) => (
           <div key={question.id} className="question-container">
             <div className="question-text">
               {index + 1}. {question.text}
@@ -94,9 +94,9 @@ const SurveyView = () => {
           </div>
         ))}
       </div>
-      <button className="submit-survey-button">Submit Survey</button>
+      <button className="submit-flow-button">Submit Flow</button>
     </div>
   );
 };
 
-export default SurveyView; 
+export default FlowView; 

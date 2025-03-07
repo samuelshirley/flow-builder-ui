@@ -1,6 +1,6 @@
 @import '../styles/common.css';
 
-.survey-designer {
+.flow-builder {
   padding: 40px;
   max-width: 1400px;
   margin: 0 auto;
@@ -8,7 +8,7 @@
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
 }
 
-.survey-designer h1 {
+.flow-builder h1 {
   text-align: center;
   color: var(--text-color);
   margin-bottom: 60px;
@@ -18,25 +18,40 @@
   text-transform: uppercase;
 }
 
-.survey-designer-container {
+.flow-builder-container {
   display: grid;
   grid-template-columns: 30% 60%;
   gap: 40px;
   margin-top: 20px;
+  position: relative;
 }
 
-.designer-section,
+.designer-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: sticky;
+  top: 20px;
+  padding-bottom: 60px;
+}
+
 .preview-section {
   background: var(--background-color);
   padding: 40px;
   border: 1px solid var(--border-color);
+  min-height: calc(100vh - 200px);
 }
 
-.survey-info {
-  margin-bottom: 40px;
+.flow-info-card {
+  background: var(--background-color);
+  padding: 30px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  min-height: fit-content;
 }
 
-.survey-title-input {
+.flow-title-input {
   width: 100%;
   padding: 12px;
   border: 1px solid var(--border-color);
@@ -45,14 +60,15 @@
   color: var(--text-color);
   margin-bottom: 20px;
   transition: border-color 0.2s ease;
+  border-radius: 4px;
 }
 
-.survey-title-input:focus {
+.flow-title-input:focus {
   outline: none;
   border-color: var(--text-color);
 }
 
-.survey-description-input {
+.flow-description-input {
   width: 100%;
   padding: 12px;
   border: 1px solid var(--border-color);
@@ -62,47 +78,54 @@
   min-height: 80px;
   transition: border-color 0.2s ease;
   resize: vertical;
+  border-radius: 4px;
 }
 
-.survey-description-input:focus {
+.flow-description-input:focus {
   outline: none;
   border-color: var(--text-color);
 }
 
 .save-section {
-  margin-top: 40px;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
 }
 
-.save-survey-button {
-  composes: button;
+.save-section button {
   width: 100%;
-  background-color: #000000;
-  color: #ffffff;
-  border: 1px solid #000000;
-  margin-top: 30px;
-  padding: 12px 24px;
   height: 48px;
+  background-color: var(--text-color);
+  color: var(--background-color);
+  border: 1px solid var(--text-color);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.2s ease;
+  border-radius: 4px;
 }
 
-.save-survey-button:hover {
-  background-color: #ffffff;
-  color: #000000;
+.save-section button:hover:not(:disabled) {
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
-.save-survey-button:disabled {
+.save-section button:disabled {
   background-color: #cccccc;
-  color: #ffffff;
+  color: var(--background-color);
   border-color: #cccccc;
   cursor: not-allowed;
 }
 
 .save-status {
-  margin-top: 20px;
-  padding: 12px;
-  font-size: 14px;
+  width: 100%;
+  padding: 8px;
+  font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  text-align: center;
+  border-radius: 4px;
 }
 
 .save-status.success {
@@ -115,11 +138,32 @@
   border: 1px solid var(--error-color);
 }
 
-.survey-link {
+.flow-info-card {
+  background: var(--background-color);
+  padding: 30px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  min-height: fit-content;
+}
+
+.question-designer-card {
+  background: var(--background-color);
+  padding: 30px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
+}
+
+.flow-link {
   margin-top: 20px;
 }
 
-.survey-link a {
+.flow-link a {
   color: var(--text-color);
   text-decoration: none;
   font-size: 12px;
@@ -128,7 +172,7 @@
   transition: opacity 0.2s ease;
 }
 
-.survey-link a:hover {
+.flow-link a:hover {
   opacity: 0.8;
 }
 
@@ -194,12 +238,12 @@
 }
 
 @media (max-width: 1024px) {
-  .survey-designer-container {
+  .flow-builder-container {
     grid-template-columns: 1fr;
     gap: 40px;
   }
   
-  .survey-designer {
+  .flow-builder {
     padding: 20px;
   }
 

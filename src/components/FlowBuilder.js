@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import QuestionDesigner from './QuestionDesigner';
 import Button from './Button';
-import './SurveyDesigner.css';
+import './FlowBuilder.css';
 
-const SurveyDesigner = () => {
+const FlowBuilder = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [questions, setQuestions] = useState([]);
-  const [savedSurveyId, setSavedSurveyId] = useState(null);
+  const [savedFlowId, setSavedFlowId] = useState(null);
   const [saveStatus, setSaveStatus] = useState(null);
 
   const handleAddQuestion = (question) => {
@@ -16,7 +16,7 @@ const SurveyDesigner = () => {
 
   const handleSave = async () => {
     try {
-      const response = await fetch('/api/surveys', {
+      const response = await fetch('/api/consultations', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -29,47 +29,29 @@ const SurveyDesigner = () => {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to save survey');
+        throw new Error('Failed to save flow');
       }
 
       const data = await response.json();
-      setSavedSurveyId(data.surveyId);
-      setSaveStatus({ type: 'success', message: 'Survey saved successfully!' });
+      setSavedFlowId(data.consultationId);
+      setSaveStatus({ type: 'success', message: 'Flow saved successfully!' });
     } catch (error) {
       setSaveStatus({ type: 'error', message: error.message });
     }
   };
 
   return (
-    <div className="survey-designer">
-      <h1>Survey Designer</h1>
-      <div className="survey-designer-container">
+    <div className="flow-builder">
+      <h1>Flow Builder</h1>
+      <div className="flow-builder-container">
         <div className="designer-section">
-          <div className="survey-info">
-            <input
-              type="text"
-              className="survey-title-input"
-              placeholder="Survey Title"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-            <textarea
-              className="survey-description-input"
-              placeholder="Survey Description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
-          </div>
-
-          <QuestionDesigner onSubmit={handleAddQuestion} />
-
           <div className="save-section">
             <Button
               onClick={handleSave}
               disabled={!title.trim() || questions.length === 0}
               fullWidth
             >
-              Save Survey
+              Save Flow
             </Button>
 
             {saveStatus && (
@@ -78,13 +60,33 @@ const SurveyDesigner = () => {
               </div>
             )}
 
-            {savedSurveyId && (
-              <div className="survey-link">
-                <a href={`/surveys/${savedSurveyId}`} target="_blank" rel="noopener noreferrer">
-                  View Survey
+            {savedFlowId && (
+              <div className="flow-link">
+                <a href={`http://localhost:5000/flow/${savedFlowId}`} target="_blank" rel="noopener noreferrer">
+                  View Flow
                 </a>
               </div>
             )}
+          </div>
+
+          <div className="flow-info-card">
+            <input
+              type="text"
+              className="flow-title-input"
+              placeholder="Flow Title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+            <textarea
+              className="flow-description-input"
+              placeholder="Flow Description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </div>
+
+          <div className="question-designer-card">
+            <QuestionDesigner onSubmit={handleAddQuestion} />
           </div>
         </div>
 
@@ -117,4 +119,4 @@ const SurveyDesigner = () => {
   );
 };
 
-export default SurveyDesigner; 
+export default FlowBuilder; 

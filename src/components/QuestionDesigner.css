@@ -1,13 +1,13 @@
 @import '../styles/common.css';
 
 .question-designer {
-  padding: 40px 0;
-  max-width: 800px;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .question-designer h2 {
-  margin-bottom: 40px;
+  margin: 0 0 8px 0;
   font-size: 18px;
   font-weight: 400;
   color: var(--text-color);
@@ -15,69 +15,66 @@
   text-transform: uppercase;
 }
 
+.question-designer form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
 .form-group {
-  margin-bottom: 40px;
+  margin-bottom: 0;
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 12px;
-  font-weight: 400;
+  margin-bottom: 8px;
+  font-size: 14px;
   color: var(--text-color);
-  font-size: 12px;
-  text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
-.form-group input[type="text"],
+.form-group input,
 .form-group select {
   width: 100%;
   padding: 12px;
   border: 1px solid var(--border-color);
   background: var(--background-color);
-  font-size: 14px;
   color: var(--text-color);
+  font-size: 14px;
+  border-radius: 4px;
   transition: border-color 0.2s ease;
-  box-sizing: border-box;
-  appearance: none;
-  -webkit-appearance: none;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-  background-repeat: no-repeat;
-  background-position: right 12px center;
-  background-size: 16px;
-  padding-right: 40px;
 }
 
-.form-group input[type="text"] {
-  background-image: none;
-  padding-right: 12px;
-}
-
-.form-group input[type="text"]:focus,
+.form-group input:focus,
 .form-group select:focus {
   outline: none;
   border-color: var(--text-color);
 }
 
 .options-section {
-  margin-bottom: 40px;
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .options-section label {
   display: block;
-  margin-bottom: 12px;
-  font-weight: 400;
+  margin-bottom: 8px;
+  font-size: 14px;
   color: var(--text-color);
-  font-size: 12px;
-  text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
 .option-row {
   display: flex;
   gap: 12px;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
   align-items: center;
+}
+
+.option-row:last-child {
+  margin-bottom: 0;
 }
 
 .option-row input {
@@ -85,8 +82,9 @@
   padding: 12px;
   border: 1px solid var(--border-color);
   background: var(--background-color);
-  font-size: 14px;
   color: var(--text-color);
+  font-size: 14px;
+  border-radius: 4px;
   transition: border-color 0.2s ease;
 }
 
@@ -124,6 +122,7 @@ button[type="submit"] {
   width: 100%;
   height: 48px;
   padding: 0;
+  margin-top: 24px;
   border: 1px solid var(--text-color);
   background: var(--text-color);
   color: var(--background-color);

@@ -1,10 +1,10 @@
-.saved-surveys {
+.flows {
   max-width: 1400px;
   margin: 0 auto;
   padding: 40px;
 }
 
-.saved-surveys h1 {
+.flows h1 {
   text-align: center;
   color: var(--text-color);
   margin-bottom: 60px;
@@ -14,7 +14,7 @@
   text-transform: uppercase;
 }
 
-.surveys-grid {
+.flows-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 40px;
@@ -22,12 +22,12 @@
 }
 
 @media (max-width: 1024px) {
-  .surveys-grid {
+  .flows-grid {
     grid-template-columns: 1fr;
   }
 }
 
-.survey-card {
+.flow-card {
   background: var(--background-color);
   padding: 40px;
   border: 1px solid var(--border-color);
@@ -37,12 +37,12 @@
   flex-direction: column;
 }
 
-.survey-card:hover {
+.flow-card:hover {
   transform: translateY(-4px);
   border-color: var(--text-color);
 }
 
-.survey-card h2 {
+.flow-card h2 {
   margin: 0 0 20px 0;
   font-size: 18px;
   color: var(--text-color);
@@ -51,7 +51,7 @@
   text-transform: uppercase;
 }
 
-.survey-description {
+.flow-description {
   color: var(--text-color);
   font-size: 14px;
   margin-bottom: 30px;
@@ -59,7 +59,7 @@
   opacity: 0.8;
 }
 
-.survey-meta {
+.flow-meta {
   display: flex;
   justify-content: space-between;
   color: var(--text-color);
@@ -70,7 +70,7 @@
   letter-spacing: 0.5px;
 }
 
-.survey-actions {
+.flow-actions {
   display: flex;
   justify-content: space-between;
   gap: 16px;
@@ -84,8 +84,8 @@
   width: 100%;
 }
 
-.survey-actions button,
-.survey-actions a {
+.flow-actions button,
+.flow-actions a {
   flex: 1;
   height: 40px;
   padding: 0;
@@ -103,8 +103,8 @@
   justify-content: center;
 }
 
-.survey-actions button:hover,
-.survey-actions a:hover {
+.flow-actions button:hover,
+.flow-actions a:hover {
   background: var(--text-color);
   color: var(--background-color);
   border-color: var(--text-color);
@@ -137,20 +137,20 @@
   color: var(--background-color);
 }
 
-.no-surveys {
+.no-flows {
   text-align: center;
   padding: 60px;
   background: var(--background-color);
 }
 
-.no-surveys p {
+.no-flows p {
   color: var(--text-color);
   margin-bottom: 30px;
   font-size: 14px;
   opacity: 0.8;
 }
 
-.create-survey-link {
+.create-flow-link {
   display: inline-block;
   background-color: var(--text-color);
   color: var(--background-color);
@@ -163,14 +163,14 @@
   font-size: 12px;
 }
 
-.create-survey-link:hover {
+.create-flow-link:hover {
   background-color: var(--background-color);
   color: var(--text-color);
   border: 1px solid var(--text-color);
 }
 
-.saved-surveys-loading,
-.saved-surveys-error {
+.flows-loading,
+.flows-error {
   text-align: center;
   padding: 60px;
   font-size: 14px;
@@ -178,7 +178,7 @@
   opacity: 0.8;
 }
 
-.saved-surveys-error {
+.flows-error {
   color: var(--error-color);
 }
 

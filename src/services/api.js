@@ -14,80 +14,80 @@ const getAuthHeader = async () => {
   };
 };
 
-export const saveSurvey = async (surveyData) => {
+export const saveConsultation = async (flowData) => {
   try {
     const headers = await getAuthHeader();
-    const response = await fetch(`${API_URL}/api/surveys`, {
+    const response = await fetch(`${API_URL}/api/consultations`, {
       method: 'POST',
       headers,
-      body: JSON.stringify(surveyData)
+      body: JSON.stringify(flowData)
     });
 
     if (!response.ok) {
-      throw new Error('Failed to save survey');
+      throw new Error('Failed to save flow');
     }
 
     return await response.json();
   } catch (error) {
-    console.error('Error saving survey:', error);
+    console.error('Error saving flow:', error);
     throw error;
   }
 };
 
-export const getUserSurveys = async () => {
+export const getUserConsultations = async () => {
   try {
     const headers = await getAuthHeader();
-    const response = await fetch(`${API_URL}/api/surveys`, {
+    const response = await fetch(`${API_URL}/api/consultations`, {
       method: 'GET',
       headers
     });
 
     if (!response.ok) {
-      throw new Error('Failed to fetch surveys');
+      throw new Error('Failed to fetch flows');
     }
 
     return await response.json();
   } catch (error) {
-    console.error('Error fetching surveys:', error);
+    console.error('Error fetching flows:', error);
     throw error;
   }
 };
 
-export const updateSurvey = async (surveyId, surveyData) => {
+export const updateConsultation = async (consultationId, flowData) => {
   try {
     const headers = await getAuthHeader();
-    const response = await fetch(`${API_URL}/api/surveys/${surveyId}`, {
+    const response = await fetch(`${API_URL}/api/consultations/${consultationId}`, {
       method: 'PUT',
       headers,
-      body: JSON.stringify(surveyData)
+      body: JSON.stringify(flowData)
     });
 
     if (!response.ok) {
-      throw new Error('Failed to update survey');
+      throw new Error('Failed to update flow');
     }
 
     return await response.json();
   } catch (error) {
-    console.error('Error updating survey:', error);
+    console.error('Error updating flow:', error);
     throw error;
   }
 };
 
-export const deleteSurvey = async (surveyId) => {
+export const deleteConsultation = async (consultationId) => {
   try {
     const headers = await getAuthHeader();
-    const response = await fetch(`${API_URL}/api/surveys/${surveyId}`, {
+    const response = await fetch(`${API_URL}/api/consultations/${consultationId}`, {
       method: 'DELETE',
       headers
     });
 
     if (!response.ok) {
-      throw new Error('Failed to delete survey');
+      throw new Error('Failed to delete flow');
     }
 
     return await response.json();
   } catch (error) {
-    console.error('Error deleting survey:', error);
+    console.error('Error deleting flow:', error);
     throw error;
   }
 }; 
