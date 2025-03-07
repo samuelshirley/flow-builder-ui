@@ -1,0 +1,176 @@
+.welcome-page {
+  min-height: calc(100vh - 60px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f9fa;
+  padding: 20px;
+}
+
+.welcome-content {
+  max-width: 400px;
+  width: 100%;
+  padding: 40px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.welcome-content h1 {
+  color: #000000;
+  margin-bottom: 40px;
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.welcome-description {
+  color: #666666;
+  margin-bottom: 30px;
+  line-height: 1.5;
+  font-size: 16px;
+}
+
+.sign-in-options {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.google-sign-in-button,
+.anonymous-sign-in-button,
+.register-button {
+  width: 100%;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.google-sign-in-button {
+  background-color: #ffffff;
+  color: #757575;
+  border: 1px solid #dadce0;
+}
+
+.google-sign-in-button:hover:not(:disabled) {
+  background-color: #f8f9fa;
+  border-color: #dadce0;
+}
+
+.google-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.anonymous-sign-in-button {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.anonymous-sign-in-button:hover:not(:disabled) {
+  background-color: #333333;
+}
+
+.sign-in-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.sign-in-divider::before,
+.sign-in-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #dadce0;
+}
+
+.sign-in-divider span {
+  padding: 0 10px;
+  color: #757575;
+  font-size: 14px;
+}
+
+.register-link-button {
+  background: none;
+  border: none;
+  color: #1a73e8;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.register-link-button:hover {
+  text-decoration: underline;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.register-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #dadce0;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border-color 0.2s ease;
+}
+
+.register-input:focus {
+  outline: none;
+  border-color: #1a73e8;
+}
+
+.register-button {
+  background-color: #1a73e8;
+  color: #ffffff;
+}
+
+.register-button:hover:not(:disabled) {
+  background-color: #1557b0;
+}
+
+.back-to-sign-in {
+  background: none;
+  border: none;
+  color: #666666;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.back-to-sign-in:hover {
+  color: #000000;
+}
+
+.welcome-note {
+  font-size: 12px;
+  color: #999999;
+  margin-top: 20px;
+}
+
+.error-message {
+  background-color: #fce8e6;
+  color: #c5221f;
+  padding: 12px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+} 

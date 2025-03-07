@@ -1,0 +1,195 @@
+.question-preview {
+  padding: 20px 0;
+}
+
+.question-preview h2 {
+  color: #000000;
+  margin-bottom: 30px;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.no-questions {
+  text-align: center;
+  color: #666666;
+  font-style: italic;
+  padding: 40px;
+  background: #f9f9f9;
+  font-size: 14px;
+}
+
+.questions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.question-container {
+  padding: 30px;
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.question-container.dragging {
+  background: #f9f9f9;
+  border-color: #000000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: scale(1.02);
+}
+
+.question-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  padding-left: 0;
+  justify-content: space-between;
+}
+
+.question-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.drag-handle {
+  color: #999999;
+  font-size: 20px;
+  cursor: grab;
+  user-select: none;
+  padding: 8px 0;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 32px;
+  line-height: 0.4;
+  gap: 0;
+  margin-left: -8px;
+}
+
+.drag-handle:hover {
+  color: #000000;
+}
+
+.question-container h3 {
+  color: #000000;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.question-text {
+  font-size: 16px;
+  color: #000000;
+  margin-bottom: 12px;
+  line-height: 1.5;
+  text-align: left;
+  padding-left: 0;
+  position: relative;
+}
+
+.options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.option input[type="radio"],
+.option input[type="checkbox"] {
+  margin: 0;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #e5e5e5;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  position: relative;
+  background: #ffffff;
+}
+
+.option input[type="checkbox"]:checked {
+  background: #000000;
+  border-color: #000000;
+}
+
+.option input[type="checkbox"]:checked::after {
+  display: none;
+}
+
+.option input[type="radio"]:checked {
+  background: #000000;
+  border-color: #000000;
+}
+
+.option input[type="radio"]:checked::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+}
+
+.option label {
+  color: #000000;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e5e5e5;
+  background: #ffffff;
+  font-size: 14px;
+  color: #000000;
+  transition: border-color 0.2s ease;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  outline: none;
+  border-color: #000000;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.5;
+}
+
+.delete-button {
+  color: #999999;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 8px;
+  transition: all 0.2s ease;
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.delete-button:hover {
+  color: #ff4444;
+} 

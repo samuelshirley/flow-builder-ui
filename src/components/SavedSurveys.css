@@ -1,0 +1,327 @@
+.saved-surveys {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+.saved-surveys h1 {
+  text-align: center;
+  color: var(--text-color);
+  margin-bottom: 60px;
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.surveys-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  padding: 0;
+}
+
+@media (max-width: 1024px) {
+  .surveys-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.survey-card {
+  background: var(--background-color);
+  padding: 40px;
+  border: 1px solid var(--border-color);
+  transition: transform 0.2s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.survey-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--text-color);
+}
+
+.survey-card h2 {
+  margin: 0 0 20px 0;
+  font-size: 18px;
+  color: var(--text-color);
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.survey-description {
+  color: var(--text-color);
+  font-size: 14px;
+  margin-bottom: 30px;
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+.survey-meta {
+  display: flex;
+  justify-content: space-between;
+  color: var(--text-color);
+  font-size: 12px;
+  margin-bottom: 30px;
+  opacity: 0.6;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.survey-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: auto;
+  padding-top: 30px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+}
+
+.survey-actions button,
+.survey-actions a {
+  flex: 1;
+  height: 40px;
+  padding: 0;
+  border: 1px solid var(--border-color);
+  background: var(--background-color);
+  color: var(--text-color);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.survey-actions button:hover,
+.survey-actions a:hover {
+  background: var(--text-color);
+  color: var(--background-color);
+  border-color: var(--text-color);
+}
+
+.delete-confirmation {
+  display: flex;
+  gap: 16px;
+}
+
+.confirm-delete-button {
+  background: var(--error-color);
+  color: var(--background-color);
+  border-color: var(--error-color);
+}
+
+.confirm-delete-button:hover {
+  background: var(--background-color);
+  color: var(--error-color);
+}
+
+.cancel-delete-button {
+  background: var(--background-color);
+  color: var(--text-color);
+  border-color: var(--border-color);
+}
+
+.cancel-delete-button:hover {
+  background: var(--text-color);
+  color: var(--background-color);
+}
+
+.no-surveys {
+  text-align: center;
+  padding: 60px;
+  background: var(--background-color);
+}
+
+.no-surveys p {
+  color: var(--text-color);
+  margin-bottom: 30px;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.create-survey-link {
+  display: inline-block;
+  background-color: var(--text-color);
+  color: var(--background-color);
+  padding: 12px 24px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  margin-top: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 12px;
+}
+
+.create-survey-link:hover {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border: 1px solid var(--text-color);
+}
+
+.saved-surveys-loading,
+.saved-surveys-error {
+  text-align: center;
+  padding: 60px;
+  font-size: 14px;
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
+.saved-surveys-error {
+  color: var(--error-color);
+}
+
+.sign-in-container {
+  max-width: 400px;
+  margin: 60px auto;
+  padding: 40px;
+  background: var(--background-color);
+  text-align: center;
+}
+
+.sign-in-container h1 {
+  color: var(--text-color);
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.sign-in-container p {
+  color: var(--text-color);
+  margin-bottom: 30px;
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+.google-sign-in-button,
+.anonymous-sign-in-button,
+.register-button {
+  width: 100%;
+  padding: 12px 24px;
+  border: 1px solid var(--border-color);
+  background: var(--background-color);
+  color: var(--text-color);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.google-sign-in-button:hover:not(:disabled),
+.anonymous-sign-in-button:hover:not(:disabled),
+.register-button:hover:not(:disabled) {
+  background: var(--text-color);
+  color: var(--background-color);
+  border-color: var(--text-color);
+}
+
+.google-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.sign-in-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.sign-in-divider::before,
+.sign-in-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.sign-in-divider span {
+  padding: 0 10px;
+  color: var(--text-color);
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+.register-link-button {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  padding: 8px;
+  margin-bottom: 20px;
+}
+
+.register-link-button:hover {
+  opacity: 0.8;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.register-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  background: var(--background-color);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: border-color 0.2s ease;
+}
+
+.register-input:focus {
+  outline: none;
+  border-color: var(--text-color);
+}
+
+.back-to-sign-in {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  padding: 8px;
+  opacity: 0.8;
+}
+
+.back-to-sign-in:hover {
+  opacity: 1;
+}
+
+.sign-in-note {
+  font-size: 12px;
+  color: var(--text-color);
+  margin-top: 20px;
+  opacity: 0.6;
+}
+
+button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+} 

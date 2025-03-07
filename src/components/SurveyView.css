@@ -1,0 +1,150 @@
+.survey-view {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 40px;
+  background: var(--background-color);
+  border: 1px solid var(--border-color);
+}
+
+.survey-header {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.survey-header h1 {
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--text-color);
+  margin-bottom: 20px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.survey-description {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
+.survey-questions {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.question-container {
+  margin-bottom: 40px;
+}
+
+.question-text {
+  font-size: 16px;
+  color: var(--text-color);
+  margin-bottom: 20px;
+}
+
+.required {
+  color: var(--error-color);
+  margin-left: 4px;
+}
+
+.question-input {
+  margin-top: 20px;
+}
+
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.option-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.option-label input[type="radio"],
+.option-label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+}
+
+.option-label label {
+  font-size: 14px;
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
+.text-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  background: var(--background-color);
+  font-size: 14px;
+  color: var(--text-color);
+  transition: border-color 0.2s ease;
+}
+
+.text-input:focus {
+  outline: none;
+  border-color: var(--text-color);
+}
+
+.text-area {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  background: var(--background-color);
+  font-size: 14px;
+  color: var(--text-color);
+  transition: border-color 0.2s ease;
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.5;
+}
+
+.text-area:focus {
+  outline: none;
+  border-color: var(--text-color);
+}
+
+.submit-survey-button {
+  width: 100%;
+  padding: 12px 24px;
+  background: var(--text-color);
+  color: var(--background-color);
+  border: 1px solid var(--text-color);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  margin-top: 40px;
+  transition: all 0.2s ease;
+  height: 48px;
+}
+
+.submit-survey-button:hover {
+  background: var(--background-color);
+  color: var(--text-color);
+}
+
+.submit-survey-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.survey-view-loading,
+.survey-view-error {
+  text-align: center;
+  padding: 60px;
+  font-size: 14px;
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
+.survey-view-error {
+  color: var(--error-color);
+} 
